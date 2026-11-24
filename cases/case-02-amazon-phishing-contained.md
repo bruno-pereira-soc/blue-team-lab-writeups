@@ -23,6 +23,12 @@ Alerts 8815 and 8816 were triggered by an inbound phishing email from `urgents@a
 ## Escalation Rationale
 Escalated to Tier 2 / Email Security team to verify whether other internal users received the same campaign from `urgents@amazon[.]biz`, execute an organization-wide email purge, and enforce permanent domain/sender blocks at the email gateway level.
 
+## MITRE ATT&CK Mapping
+- **Tactic:** Initial Access (TA0001)
+  - **Technique:** Phishing: Spearphishing Link (`T1566.002`) — Adversary sent an email impersonating Amazon containing a shortened external link (`hxxp://bit[.]ly/3sHkX3da12340`).
+- **Tactic:** Execution (TA0002)
+  - **Technique:** User Execution: Malicious Link (`T1204.001`) — Target user clicked the phishing link, triggering an outbound HTTP connection attempt (`67.199.248[.]11:80`) before being blocked by the firewall.
+
 ## Recommended Remediation Actions
 * Purge the phishing email (`"Your Amazon Package Couldn't Be Delivered – Action Required"`) from Hannah Harris's mailbox/trash and any other affected inboxes.
 * Block the sender address (`urgents@amazon[.]biz`) and spoofed domain (`amazon[.]biz`) on the email security gateway.
